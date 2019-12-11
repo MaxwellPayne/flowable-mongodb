@@ -23,15 +23,23 @@ import org.flowable.common.engine.impl.interceptor.SessionFactory;
 import org.flowable.common.engine.impl.persistence.cache.EntityCache;
 import org.flowable.common.engine.impl.persistence.entity.Entity;
 import org.flowable.engine.impl.persistence.entity.CommentEntityImpl;
-import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
+//import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
+
 import org.flowable.engine.impl.persistence.entity.DeploymentEntityImpl;
 import org.flowable.engine.impl.persistence.entity.ExecutionEntityImpl;
 import org.flowable.engine.impl.persistence.entity.HistoricActivityInstanceEntityImpl;
 import org.flowable.engine.impl.persistence.entity.HistoricDetailEntityImpl;
 import org.flowable.engine.impl.persistence.entity.HistoricProcessInstanceEntityImpl;
-import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
+
+//import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
+
 import org.flowable.engine.impl.persistence.entity.ResourceEntityImpl;
-import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
+
+//import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
+
 import org.flowable.identitylink.service.impl.persistence.entity.HistoricIdentityLinkEntityImpl;
 import org.flowable.identitylink.service.impl.persistence.entity.IdentityLinkEntityImpl;
 import org.flowable.job.service.impl.persistence.entity.JobByteArrayEntityImpl;

@@ -15,6 +15,7 @@ package org.flowable.mongodb.cfg;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.flowable.common.engine.api.scope.ScopeTypes;
 import org.flowable.common.engine.impl.interceptor.CommandInterceptor;
 import org.flowable.common.engine.impl.persistence.GenericManagerFactory;
 import org.flowable.common.engine.impl.persistence.StrongUuidGenerator;
@@ -141,9 +142,9 @@ public class MongoDbProcessEngineConfiguration extends ProcessEngineConfiguratio
         mongoDbSessionFactory.registerDataManager(MongoDbProcessDefinitionInfoDataManager.COLLECTION_PROCESS_DEFINITION_INFO, mongoDbProcessDefinitionInfoDataManager);
         this.processDefinitionInfoDataManager = mongoDbProcessDefinitionInfoDataManager;
 
-        MongoDbEventSubscriptionDataManager mongoDbEventSubscriptionDataManager = new MongoDbEventSubscriptionDataManager(this);
-        mongoDbSessionFactory.registerDataManager(MongoDbEventSubscriptionDataManager.COLLECTION_EVENT_SUBSCRIPTION, mongoDbEventSubscriptionDataManager);
-        this.eventSubscriptionDataManager = mongoDbEventSubscriptionDataManager;
+//        MongoDbEventSubscriptionDataManager mongoDbEventSubscriptionDataManager = new MongoDbEventSubscriptionDataManager(this);
+//        mongoDbSessionFactory.registerDataManager(MongoDbEventSubscriptionDataManager.COLLECTION_EVENT_SUBSCRIPTION, mongoDbEventSubscriptionDataManager);
+//        this.eventSubscriptionDataManager = mongoDbEventSubscriptionDataManager;
 
         MongoDbCommentDataManager mongoDbCommentDataManager = new MongoDbCommentDataManager(this);
         mongoDbSessionFactory.registerDataManager(MongoDbCommentDataManager.COLLECTION_COMMENTS, mongoDbCommentDataManager);
@@ -169,28 +170,28 @@ public class MongoDbProcessEngineConfiguration extends ProcessEngineConfiguratio
 
     @Override
     protected JobServiceConfiguration instantiateJobServiceConfiguration() {
-        MongoDbJobServiceConfiguration mongoDbJobServiceConfiguration = new MongoDbJobServiceConfiguration();
+        MongoDbJobServiceConfiguration mongoDbJobServiceConfiguration = new MongoDbJobServiceConfiguration(ScopeTypes.BPMN);
         mongoDbJobServiceConfiguration.setMongoDbSessionFactory(mongoDbSessionFactory);
         return mongoDbJobServiceConfiguration;
     }
 
     @Override
     protected TaskServiceConfiguration instantiateTaskServiceConfiguration() {
-        MongoDbTaskServiceConfiguration mongoDbTaskServiceConfiguration = new MongoDbTaskServiceConfiguration();
+        MongoDbTaskServiceConfiguration mongoDbTaskServiceConfiguration = new MongoDbTaskServiceConfiguration(ScopeTypes.BPMN);
         mongoDbTaskServiceConfiguration.setMongoDbSessionFactory(mongoDbSessionFactory);
         return mongoDbTaskServiceConfiguration;
     }
 
     @Override
     protected IdentityLinkServiceConfiguration instantiateIdentityLinkServiceConfiguration() {
-        MongoDbIdentityLinkServiceConfiguration mongoDbIdentityLinkServiceConfiguration = new MongoDbIdentityLinkServiceConfiguration();
+        MongoDbIdentityLinkServiceConfiguration mongoDbIdentityLinkServiceConfiguration = new MongoDbIdentityLinkServiceConfiguration(ScopeTypes.BPMN);
         mongoDbIdentityLinkServiceConfiguration.setMongoDbSessionFactory(mongoDbSessionFactory);
         return mongoDbIdentityLinkServiceConfiguration;
     }
 
     @Override
     protected VariableServiceConfiguration instantiateVariableServiceConfiguration() {
-        MongoDbVariableServiceConfiguration mongoDbVariableServiceConfiguration = new MongoDbVariableServiceConfiguration();
+        MongoDbVariableServiceConfiguration mongoDbVariableServiceConfiguration = new MongoDbVariableServiceConfiguration(ScopeTypes.BPMN);
         mongoDbVariableServiceConfiguration.setMongoDbSessionFactory(mongoDbSessionFactory);
         return mongoDbVariableServiceConfiguration;
     }

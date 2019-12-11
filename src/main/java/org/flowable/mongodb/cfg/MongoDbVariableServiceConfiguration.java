@@ -23,8 +23,12 @@ import org.flowable.variable.service.VariableServiceConfiguration;
 public class MongoDbVariableServiceConfiguration extends VariableServiceConfiguration {
     
     protected MongoDbSessionFactory mongoDbSessionFactory;
-    
-    @Override
+
+  public MongoDbVariableServiceConfiguration(String engineName) {
+    super(engineName);
+  }
+
+  @Override
     public void initDataManagers() {
         MongoDbVariableInstanceDataManager mongoDbVariableInstanceDataManager = new MongoDbVariableInstanceDataManager();
         mongoDbSessionFactory.registerDataManager(MongoDbVariableInstanceDataManager.COLLECTION_VARIABLES, mongoDbVariableInstanceDataManager);

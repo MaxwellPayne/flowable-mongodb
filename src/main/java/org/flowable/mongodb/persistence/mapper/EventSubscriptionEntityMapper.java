@@ -14,11 +14,16 @@ package org.flowable.mongodb.persistence.mapper;
 
 import org.bson.Document;
 import org.flowable.common.engine.api.FlowableException;
-import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
-import org.flowable.engine.impl.persistence.entity.EventSubscriptionEntityImpl;
-import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
-import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
-import org.flowable.mongodb.persistence.EntityToDocumentMapper;
+import org.flowable.eventsubscription.service.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.EventSubscriptionEntityImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
+
+//import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
+//import org.flowable.engine.impl.persistence.entity.EventSubscriptionEntityImpl;
+//import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
+//import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
+//import org.flowable.mongodb.persistence.EntityToDocumentMapper;
 
 public class EventSubscriptionEntityMapper extends AbstractEntityToDocumentMapper<EventSubscriptionEntityImpl> {
 

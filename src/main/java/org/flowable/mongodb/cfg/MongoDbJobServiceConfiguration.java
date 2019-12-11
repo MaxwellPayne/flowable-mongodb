@@ -27,7 +27,11 @@ public class MongoDbJobServiceConfiguration extends JobServiceConfiguration {
 
     protected MongoDbSessionFactory mongoDbSessionFactory;
 
-    @Override
+  public MongoDbJobServiceConfiguration(String engineName) {
+    super(engineName);
+  }
+
+  @Override
     public void initDataManagers() {
         // TODO: other data managers
         if (jobDataManager == null) {

@@ -23,8 +23,12 @@ import org.flowable.task.service.TaskServiceConfiguration;
 public class MongoDbTaskServiceConfiguration extends TaskServiceConfiguration {
     
     protected MongoDbSessionFactory mongoDbSessionFactory;
-    
-    @Override
+
+  public MongoDbTaskServiceConfiguration(String engineName) {
+    super(engineName);
+  }
+
+  @Override
     public void initDataManagers() {
         MongoDbTaskDataManager mongoDbTaskDataManager = new MongoDbTaskDataManager();
         mongoDbSessionFactory.registerDataManager(MongoDbTaskDataManager.COLLECTION_TASKS, mongoDbTaskDataManager);

@@ -21,6 +21,7 @@ import org.flowable.identitylink.service.impl.persistence.entity.data.IdentityLi
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.model.Filters;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Joram Barrez
@@ -120,5 +121,10 @@ public class MongoDbIdentityLinkDataManager extends AbstractMongoDbDataManager<I
     public void deleteIdentityLinksByScopeIdAndScopeType(String scopeId, String scopeType) {
         throw new UnsupportedOperationException();
     }
+
+  @Override
+  public void deleteIdentityLinksByScopeDefinitionIdAndScopeType(String s, String s1) {
+      throw new NotImplementedException();
+  }
 
 }

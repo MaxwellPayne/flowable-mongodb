@@ -29,6 +29,7 @@ import org.flowable.job.service.impl.persistence.entity.data.TimerJobDataManager
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.model.Filters;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Joram Barrez
@@ -111,7 +112,12 @@ public class MongoDbTimerJobDataManager extends AbstractMongoDbDataManager<Timer
         return getMongoDbSession().find(COLLECTION_TIMER_JOBS, filter);
     }
 
-    @Override
+  @Override
+  public List<TimerJobEntity> findJobsByScopeIdAndSubScopeId(String s, String s1) {
+    throw new NotImplementedException();
+  }
+
+  @Override
     public List<Job> findJobsByQueryCriteria(TimerJobQueryImpl timerJobQuery) {
         List<Job> jobs = getMongoDbSession().find(COLLECTION_TIMER_JOBS, createFilter(timerJobQuery));
         return jobs;

@@ -18,20 +18,36 @@ import java.util.List;
 
 import org.bson.conversions.Bson;
 import org.flowable.common.engine.impl.persistence.entity.Entity;
-import org.flowable.engine.impl.EventSubscriptionQueryImpl;
-import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntity;
-import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
-import org.flowable.engine.impl.persistence.entity.EventSubscriptionEntity;
-import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntity;
-import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
-import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntity;
-import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
-import org.flowable.engine.impl.persistence.entity.data.EventSubscriptionDataManager;
-import org.flowable.engine.runtime.EventSubscription;
+
+//import org.flowable.engine.impl.EventSubscriptionQueryImpl;
+
+//import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntity;
+
+//import org.flowable.engine.impl.persistence.entity.CompensateEventSubscriptionEntityImpl;
+
+//import org.flowable.engine.impl.persistence.entity.EventSubscriptionEntity;
+
+//import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntity;
+
+//import org.flowable.engine.impl.persistence.entity.MessageEventSubscriptionEntityImpl;
+
+//import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntity;
+
+//import org.flowable.engine.impl.persistence.entity.SignalEventSubscriptionEntityImpl;
+
+//import org.flowable.engine.impl.persistence.entity.data.EventSubscriptionDataManager;
+
+//import org.flowable.engine.runtime.EventSubscription;
+
+import org.flowable.eventsubscription.api.EventSubscription;
+import org.flowable.eventsubscription.service.impl.EventSubscriptionQueryImpl;
+import org.flowable.eventsubscription.service.impl.persistence.entity.*;
+import org.flowable.eventsubscription.service.impl.persistence.entity.data.EventSubscriptionDataManager;
 import org.flowable.mongodb.cfg.MongoDbProcessEngineConfiguration;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.model.Filters;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * @author Joram Barrez
@@ -122,7 +138,12 @@ public class MongoDbEventSubscriptionDataManager extends AbstractMongoDbDataMana
         throw new UnsupportedOperationException();
     }
 
-    @Override
+  @Override
+  public List<SignalEventSubscriptionEntity> findSignalEventSubscriptionsByScopeAndEventName(String s, String s1, String s2) {
+    throw new NotImplementedException();
+  }
+
+  @Override
     public List<SignalEventSubscriptionEntity> findSignalEventSubscriptionsByNameAndExecution(String name, String executionId) {
         Bson filter = Filters.and(Filters.eq("eventType", "signal"), Filters.eq("eventName", name), Filters.eq("executionId", executionId));
         return getMongoDbSession().find(COLLECTION_EVENT_SUBSCRIPTION, filter);
@@ -143,7 +164,12 @@ public class MongoDbEventSubscriptionDataManager extends AbstractMongoDbDataMana
         return getMongoDbSession().find(COLLECTION_EVENT_SUBSCRIPTION, Filters.eq("executionId", executionId));
     }
 
-    @Override
+  @Override
+  public List<EventSubscriptionEntity> findEventSubscriptionsBySubScopeId(String s) {
+    throw new NotImplementedException();
+  }
+
+  @Override
     public List<EventSubscriptionEntity> findEventSubscriptionsByTypeAndProcessDefinitionId(String type,
             String processDefinitionId, String tenantId) {
         // TODO
@@ -189,5 +215,10 @@ public class MongoDbEventSubscriptionDataManager extends AbstractMongoDbDataMana
             delete(eventSubscriptionEntity);
         }
     }
+
+  @Override
+  public void deleteEventSubscriptionsForScopeIdAndType(String s, String s1) {
+    throw new NotImplementedException();
+  }
 
 }
